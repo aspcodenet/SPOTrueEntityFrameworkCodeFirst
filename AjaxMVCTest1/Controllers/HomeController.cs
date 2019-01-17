@@ -10,14 +10,37 @@ namespace AjaxMVCTest1.Controllers
     {
         public ActionResult Index()
         {
+
+            using (var context = new AjaxMVCTest1.Models.Model1())
+            {
+                var prod = context.Products.FirstOrDefault(r => r.Id == 1);
+                var catName = prod.Category.Name;
+            }
+
+                return View();
+
+
+        }
+
+        public ActionResult Showcat(int id)
+        {
+            using (var context = new AjaxMVCTest1.Models.Model1())
+            {
+                var cat = context.Categories.FirstOrDefault(r => r.Id == id);
+                var catName = cat.Name;
+
+                foreach(var prod in cat.Products)
+                {
+
+                }
+            }
+
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult GetPartialCategories()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            return PartialView();
         }
 
         public ActionResult Contact()

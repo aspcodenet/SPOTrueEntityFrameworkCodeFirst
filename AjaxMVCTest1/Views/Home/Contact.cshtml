@@ -15,3 +15,20 @@
     <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
     <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
 </address>
+
+@Ajax.ActionLink("Hämta alla kategorier","GetPartialCategories",
+    new AjaxOptions
+    {
+        UpdateTargetId = "cats",
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "GET"
+    })
+
+<ul id="cats">
+    <li>Här kommer categories</li>
+</ul>
+
+@section Scripts
+{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+}
